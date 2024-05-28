@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MNEb5+LDzrrxtjmD8vajLXGYOCi5muXgwtNzcLmZX6PcN3LXkD/PtiwvfQEaMeoWfz9auQ83siESxMQg9vxIng==",
+  "dgSpecHash": "VsUP85UWPD22GM72y2CsjIINWN2Yo+jvAI5ISgvrnR9Cyuo3/9SIqI973hkTc5TAIIV1di/K/x8EBdkWCgWeAw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mikhail\\Documents\\GitHub\\AreaOfFigure\\GeometryTests\\GeometryTests.csproj",
   "expectedPackageFiles": [
@@ -31,7 +31,10 @@
     "C:\\Users\\Mikhail\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Mikhail\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
-    "C:\\Users\\Mikhail\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+    "C:\\Users\\Mikhail\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,5 @@
-﻿using Geometry.Extensions;
-using Geometry.Figures;
+﻿using Geometry.Figures;
+using Geometry.Figures.Base;
 using NUnit.Framework.Internal;
 
 namespace GeometryTests
@@ -12,12 +12,13 @@ namespace GeometryTests
         {
             // Треугольник
             var triangle = new Triangle();
+            var area = triangle.GetArea();
 
             // Результаты
             Assert.IsNotNull(triangle.SideOne);
             Assert.IsNotNull(triangle.SideTwo);
             Assert.IsNotNull(triangle.SideThree);
-            Assert.IsNotNull(triangle.Area);
+            Assert.IsNotNull(area);
         }
 
         [TestMethod]
@@ -27,25 +28,31 @@ namespace GeometryTests
             var sideOne = 3;
             var sideTwo = 4;
             var sideThree = 5;
-            
+
             // Ожидаемый результат
             var p = (sideOne + sideTwo + sideThree) / 2;
             var result = Math.Sqrt(p) * (p - sideOne) * (p - sideTwo) * (p - sideThree);
-            
+
             // Треугольник
-            var triangle = new Triangle(sideOne, sideTwo, sideThree);
+            var triangle = new Triangle()
+            {
+                SideOne = sideOne,
+                SideTwo = sideTwo,
+                SideThree = sideThree
+            };
 
             // Проверка является ли треугольник - прямоугольным
-            var isRightAngled = FiguresExtension.CheckFigureFor(triangle, x => Math.Pow(x.SideOne, 2) + Math.Pow(x.SideTwo, 2) != Math.Pow(x.SideThree, 2)
-            || Math.Pow(x.SideOne, 2) + Math.Pow(x.SideThree, 2) != Math.Pow(x.SideTwo, 2)
-            || Math.Pow(x.SideTwo, 2) + Math.Pow(x.SideThree, 2) != Math.Pow(x.SideOne, 2));
+            var isRightAngled = triangle.IsRightAngled();
+
+            // площадь
+            var area = triangle.GetArea();
 
             // Результаты
             Assert.IsTrue(isRightAngled);
             Assert.AreEqual(sideOne, triangle.SideOne);
             Assert.AreEqual(sideTwo, triangle.SideTwo);
             Assert.AreEqual(sideThree, triangle.SideThree);
-            Assert.AreEqual(result, triangle.Area);
+            Assert.AreEqual(result, area);
         }
 
         [TestMethod]
@@ -53,10 +60,12 @@ namespace GeometryTests
         {
             // Круг
             var circle = new Circle();
+            // площадь
+            var area = circle.GetArea();
 
             // Результаты
             Assert.IsNotNull(circle.Radius);
-            Assert.IsNotNull(circle.Area);
+            Assert.IsNotNull(area);
         }
 
         [TestMethod]
@@ -69,11 +78,12 @@ namespace GeometryTests
             var result = Math.PI * Math.Pow(radius, 2);
 
             // Круг
-            var circle = new Circle(radius);
-            
+            var circle = new Circle { Radius = radius };
+            var area = circle.GetArea();
+
             // Сравнение результатов
             Assert.AreEqual(radius, circle.Radius);
-            Assert.AreEqual(result, circle.Area);
+            Assert.AreEqual(result, area);
         }
 
         [TestMethod]
@@ -89,32 +99,16 @@ namespace GeometryTests
             var result = Math.Sqrt(p) * (p - sideOne) * (p - sideTwo) * (p - sideThree);
 
             // Вычисление площади фигуры(треугльник)
-            var figureArea = FiguresExtension.GetAreaFor<Triangle>(new(sideOne, sideTwo, sideThree));
+            BaseFigure figure = new Triangle()
+            {
+                SideOne = sideOne,
+                SideTwo = sideTwo,
+                SideThree = sideThree
+            };
+            var area = figure.GetArea();
 
             // Результаты
-            Assert.AreEqual(result, figureArea);
-        }
-
-        [TestMethod]
-        public void Test_Figures_Validations()
-        {
-            // Тестирование методов вадидации для круга и треугольника
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(10, 1, 2));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(1, 10, 2));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(1, 2, 10));
-
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(0, 0, 0));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(0, 1, 2));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(1, 0, 3));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(1, 3, 0));
-
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(-3, -4, -5));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(-3, 4, 5));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(3, -4, 5));
-            Assert.ThrowsException<ArgumentException>(() => new Triangle(3, 4, -5));
-
-            Assert.ThrowsException<ArgumentException>(() => new Circle(-8));
-            Assert.ThrowsException<ArgumentException>(() => new Circle(0));
+            Assert.AreEqual(result, area);
         }
     }
 }

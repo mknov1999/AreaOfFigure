@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mEq55xLnPMAYg2Vu+cJm4a4QDbaB+5S+EzQoUcDa0HTvlI+OYkq3COfvM3AB8bdJPK6Z7dhJvYppEB+qRVuKjQ==",
+  "dgSpecHash": "r6y89nJf2SJzxo39TnUf70ECo45J2di/OIoGM2xTElhp8ovT74M9E3lHXZ5kMoEzNRz1GVVMPGy4WX17YGALXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Mikhail\\Documents\\GitHub\\AreaOfFigure\\Geometry\\Geometry.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\Mikhail\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512"
+  ],
   "logs": []
 }

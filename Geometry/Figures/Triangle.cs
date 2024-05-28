@@ -1,41 +1,25 @@
-﻿using Geometry.Interfaces;
+﻿using Geometry.Figures.Base;
 namespace Geometry.Figures;
-public class Triangle : IFigure
+public class Triangle : BaseFigure
 {
-    public Triangle()
+    public double SideOne { get; set; }
+    public double SideTwo { get; set; }
+    public double SideThree { get; set; }
+
+    public override double GetArea()
     {
-        SideOne = SideTwo = SideThree = 1.0;
+        var hp = GetPerimeter() / 2;
+        return Math.Sqrt(hp) * (hp - SideOne) * (hp - SideTwo) * (hp - SideThree);
     }
 
-    public Triangle(double sideOne, double sideTwo, double sideThree)
-    {
-        SideOne = sideOne;
-        SideTwo = sideTwo;
-        SideThree = sideThree;
+    public override double GetPerimeter() => SideOne + SideTwo + SideThree;
 
-        Validate();
-    }
-
-    public double SideOne { get; }
-    public double SideTwo { get; }
-    public double SideThree { get; }
-
-    public double Area
-    {
-        get
-        {
-            var hp = (SideOne + SideTwo + SideThree) / 2;
-            return Math.Sqrt(hp) * (hp - SideOne) * (hp - SideTwo) * (hp - SideThree);
-        }
-    }
-
-    private void Validate()
-    {
-        // проверка стороны положительные
-        if (SideOne <= 0 || SideTwo <= 0 || SideThree <= 0)
-            throw new ArgumentException($"One or more sides are not positive");
-        // проверка является ли фигура - треугольником
-        else if (SideOne + SideTwo < SideThree || SideOne + SideThree < SideTwo || SideTwo + SideThree < SideOne)
-            throw new ArgumentException($"Figure is not type Triangle");
-    }
+    /// <summary>
+    /// Проверка является ли треугольник - прямоугольным
+    /// </summary>
+    /// <returns>true or false</returns>
+    public bool IsRightAngled()
+        => Math.Pow(SideOne, 2) + Math.Pow(SideTwo, 2) != Math.Pow(SideThree, 2)
+            || Math.Pow(SideOne, 2) + Math.Pow(SideThree, 2) != Math.Pow(SideTwo, 2)
+            || Math.Pow(SideTwo, 2) + Math.Pow(SideThree, 2) != Math.Pow(SideOne, 2);
 }
